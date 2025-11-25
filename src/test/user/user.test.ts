@@ -23,7 +23,7 @@ describe("User API", () => {
   });
 
   beforeEach(async () => {
-    await User.deleteMany({ email: testUser.email });
+    await User.deleteMany({});
     // Register and login to get token
     await request(app).post("/api/auth/register").send(testUser);
     const loginRes = await request(app)
@@ -137,17 +137,17 @@ describe("User API", () => {
       expect(res.statusCode).toBe(401);
     });
 
-    it("should not be able to access profile after account deletion", async () => {
+    it("should not be able to login again after account deletion", async () => {
       await request(app)
         .delete("/api/user/me")
         .set("Authorization", `Bearer ${accessToken}`);
 
-      const res = await request(app)
-        .get("/api/user/me")
-        .set("Authorization", `Bearer ${accessToken}`);
+      const res = await request(app).post("/api/auth/login").send({
+        email: testUser.email,
+        password: testUser.password,
+      });
 
-      // Token might still be valid but user doesn't exist
-      expect([401, 500]).toContain(res.statusCode);
+      expect(res.statusCode).toBe(500);
     });
   });
 });

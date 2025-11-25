@@ -150,7 +150,8 @@ describe("Image API", () => {
       // Create an approved public image
       const image = new Image({
         user: userId,
-        imageUrl: "https://example.com/image.jpg",
+        imageUrl:
+          "https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-800x525.jpg",
         publicId: "test-public-id",
         description: "Test public image",
         visibility: "public",
@@ -171,7 +172,8 @@ describe("Image API", () => {
       // Create a pending image
       const pendingImage = new Image({
         user: userId,
-        imageUrl: "https://example.com/pending.jpg",
+        imageUrl:
+          "https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-800x525.jpg",
         publicId: "test-pending-id",
         description: "Pending image",
         visibility: "public",
@@ -192,7 +194,8 @@ describe("Image API", () => {
       // Create an approved private image
       const privateImage = new Image({
         user: userId,
-        imageUrl: "https://example.com/private.jpg",
+        imageUrl:
+          "https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-800x525.jpg",
         publicId: "test-private-id",
         description: "Private image",
         visibility: "private",
@@ -210,7 +213,8 @@ describe("Image API", () => {
       // Create multiple approved images
       const image1 = new Image({
         user: userId,
-        imageUrl: "https://example.com/image1.jpg",
+        imageUrl:
+          "https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-800x525.jpg",
         publicId: "test-id-1",
         description: "First image",
         visibility: "public",
@@ -221,7 +225,8 @@ describe("Image API", () => {
 
       const image2 = new Image({
         user: userId,
-        imageUrl: "https://example.com/image2.jpg",
+        imageUrl:
+          "https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-800x525.jpg",
         publicId: "test-id-2",
         description: "Second image",
         visibility: "public",

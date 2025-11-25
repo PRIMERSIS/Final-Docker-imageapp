@@ -32,7 +32,7 @@ describe("User API", () => {
         }
     }));
     beforeEach(() => __awaiter(void 0, void 0, void 0, function* () {
-        yield User_1.User.deleteMany({ email: testUser.email });
+        yield User_1.User.deleteMany({});
         yield (0, supertest_1.default)(app_1.default).post("/api/auth/register").send(testUser);
         const loginRes = yield (0, supertest_1.default)(app_1.default)
             .post("/api/auth/login")
@@ -121,14 +121,15 @@ describe("User API", () => {
             const res = yield (0, supertest_1.default)(app_1.default).delete("/api/user/me");
             expect(res.statusCode).toBe(401);
         }));
-        it("should not be able to access profile after account deletion", () => __awaiter(void 0, void 0, void 0, function* () {
+        it("should not be able to login again after account deletion", () => __awaiter(void 0, void 0, void 0, function* () {
             yield (0, supertest_1.default)(app_1.default)
                 .delete("/api/user/me")
                 .set("Authorization", `Bearer ${accessToken}`);
-            const res = yield (0, supertest_1.default)(app_1.default)
-                .get("/api/user/me")
-                .set("Authorization", `Bearer ${accessToken}`);
-            expect([401, 500]).toContain(res.statusCode);
+            const res = yield (0, supertest_1.default)(app_1.default).post("/api/auth/login").send({
+                email: testUser.email,
+                password: testUser.password,
+            });
+            expect(res.statusCode).toBe(500);
         }));
     });
 });

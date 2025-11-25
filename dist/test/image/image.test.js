@@ -164,7 +164,7 @@ describe("Image API", () => {
         it("should get approved public images", () => __awaiter(void 0, void 0, void 0, function* () {
             const image = new Image_1.Image({
                 user: userId,
-                imageUrl: "https://example.com/image.jpg",
+                imageUrl: "https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-800x525.jpg",
                 publicId: "test-public-id",
                 description: "Test public image",
                 visibility: "public",
@@ -181,7 +181,7 @@ describe("Image API", () => {
         it("should not return pending images", () => __awaiter(void 0, void 0, void 0, function* () {
             const pendingImage = new Image_1.Image({
                 user: userId,
-                imageUrl: "https://example.com/pending.jpg",
+                imageUrl: "https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-800x525.jpg",
                 publicId: "test-pending-id",
                 description: "Pending image",
                 visibility: "public",
@@ -196,7 +196,7 @@ describe("Image API", () => {
             yield Image_1.Image.deleteMany({});
             const privateImage = new Image_1.Image({
                 user: userId,
-                imageUrl: "https://example.com/private.jpg",
+                imageUrl: "https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-800x525.jpg",
                 publicId: "test-private-id",
                 description: "Private image",
                 visibility: "private",
@@ -210,7 +210,7 @@ describe("Image API", () => {
         it("should return images sorted by createdAt descending", () => __awaiter(void 0, void 0, void 0, function* () {
             const image1 = new Image_1.Image({
                 user: userId,
-                imageUrl: "https://example.com/image1.jpg",
+                imageUrl: "https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-800x525.jpg",
                 publicId: "test-id-1",
                 description: "First image",
                 visibility: "public",
@@ -220,7 +220,7 @@ describe("Image API", () => {
             yield image1.save();
             const image2 = new Image_1.Image({
                 user: userId,
-                imageUrl: "https://example.com/image2.jpg",
+                imageUrl: "https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-800x525.jpg",
                 publicId: "test-id-2",
                 description: "Second image",
                 visibility: "public",
