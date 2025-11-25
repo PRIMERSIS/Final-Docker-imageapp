@@ -3,29 +3,21 @@ version: "3.8"
 services:
   app:
     build: .
-    container_name: imageapp
-    restart: unless-stopped
-    env_file:
-      - .env.docker
     ports:
-      - "9999:9999"
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - MONGO_URI=mongodb://localhost:27017/imageapp
+      - JWT_SECRET=R2kSUWXmK9rU28EhYxirY0DZ40RTr5ju0ppH7bkCSwXmALwoHh
     depends_on:
       - mongo
-    volumes:
-     
-      - uploads:/app/uploads
 
   mongo:
     image: mongo:6.0
-    container_name: imageapp-mongo
-    restart: unless-stopped
     ports:
       - "27017:27017"
     volumes:
-      - mongo_data:/data/db
-    environment:
-      MONGO_INITDB_DATABASE: imageapp
+      - mongo-data:/data/db
 
 volumes:
-  mongo_data:
-  uploads:
+  mongo-data:

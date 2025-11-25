@@ -47,7 +47,7 @@ describe("Like API", () => {
     // Create a test image
     const image = new Image({
       user: userId,
-      imageUrl: "https://example.com/test-image.jpg",
+      imageUrl: "https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-800x525.jpg",
       publicId: "test-image-id",
       description: "Test image for likes",
       visibility: "public",
