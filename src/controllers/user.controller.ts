@@ -3,7 +3,8 @@ import { AuthRequest } from "../middlewares/auth.middlewares";
 import { User } from "../models/User";
 
 export const getProfile = async (req: AuthRequest, res: Response) => {
-  res.json({ user: req.user });
+  const user = await User.findById(req.user?.id).select("-password");
+  res.json({ user });
 };
 
 export const updateProfile = async (req: AuthRequest, res: Response) => {

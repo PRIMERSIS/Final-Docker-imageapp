@@ -12,7 +12,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteAccount = exports.updateProfile = exports.getProfile = void 0;
 const User_1 = require("../models/User");
 const getProfile = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.json({ user: req.user });
+    var _a;
+    const user = yield User_1.User.findById((_a = req.user) === null || _a === void 0 ? void 0 : _a.id).select("-password");
+    res.json({ user });
 });
 exports.getProfile = getProfile;
 const updateProfile = (req, res) => __awaiter(void 0, void 0, void 0, function* () {

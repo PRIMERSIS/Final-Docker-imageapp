@@ -12,16 +12,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.connectDB = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
-const connectDB = () => __awaiter(void 0, void 0, void 0, function* () {
-    const mongoUri = process.env.MONGO_URI || process.env.MONGO_ATLAS_URI || "mongodb://localhost:27017/imageapp";
-    if (!mongoUri) {
-        throw new Error("MongoDB URI is not defined. Please set MONGO_URI or MONGO_ATLAS_URI in your .env file");
+beforeAll(() => __awaiter(void 0, void 0, void 0, function* () {
+    yield mongoose_1.default.connect(process.env.MONGO_ATLAS_URI, {});
+}));
+afterEach(() => __awaiter(void 0, void 0, void 0, function* () {
+    const db = mongoose_1.default.connection.db;
+    const collections = yield db.collections();
+    for (let collection of collections) {
+        yield collection.deleteMany({});
     }
-    yield mongoose_1.default.connect(mongoUri);
-    console.log("MongoDB connected!!!");
-});
-exports.connectDB = connectDB;
+}));
+afterAll(() => __awaiter(void 0, void 0, void 0, function* () {
+    yield mongoose_1.default.disconnect();
+}));
